@@ -397,8 +397,6 @@ Public website link:
 
 https://pixel-perfect-reverie-70.lovable.app/calendario
 
-## 5. Project Presentation
-
 ## 6. Credits and Authorship
 
 Project: Atempo
@@ -415,7 +413,3 @@ Documentation date: November 1, 2026
 This project was conceptualized, designed, and developed with the assistance of artificial intelligence as part of the Vibe Coding program by Tecnolochicas México, an initiative of Fundación Televisa.
 
 © 2026 Xymena Krystel Domínguez Carmona. All rights reserved.
-
-This project was conceptualized, designed, and developed with the assistance of artificial intelligence as part of the Vibe Coding program by Tecnolochicas México, an initiative of Fundación Televisa.
-
-© 2026 [NOMBRE COMPLETO]. All rights reserved.
