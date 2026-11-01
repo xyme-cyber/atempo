@@ -18,9 +18,10 @@ import { CATEGORY_LABEL, CATEGORY_ORDER, ENERGIES, dayCategory, dayDistribution,
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/registro")({
-  validateSearch: (s: Record<string, unknown>): { date?: string } => ({
-    date: typeof s.date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(s.date) ? s.date : undefined,
-  }),
+  validateSearch: (s: Record<string, unknown>): { date?: string } => {
+    const d = s["date"];
+    return typeof d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d) ? { date: d } : {};
+  },
   head: () => ({
     meta: [
       { title: "Registro diario — Atempo" },
@@ -246,7 +247,7 @@ function Registro() {
   );
 }
 
-function DayDetail({ log, date, onEdit, onDelete, canDelete, isDraft }: { log?: DayLog; date: string; onEdit: () => void; onDelete: () => void; canDelete: boolean; isDraft: boolean }) {
+function DayDetail({ log, date, onEdit, onDelete, canDelete, isDraft }: { log: DayLog | undefined; date: string; onEdit: () => void; onDelete: () => void; canDelete: boolean; isDraft: boolean }) {
   const acts = log?.isRest ? [] : (log?.activities ?? []);
   const cat = dayCategory(log && (log.isRest || acts.length) ? log : undefined);
   const dist = useMemo(() => dayDistribution(acts), [acts]);

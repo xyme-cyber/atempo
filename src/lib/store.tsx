@@ -340,7 +340,7 @@ export function hasVisited() {
 export function displayName(user: User | null): string {
   if (!user) return "Invitado";
   const m = user.user_metadata as Record<string, string | undefined>;
-  return m.full_name || m.name || user.email?.split("@")[0] || "Tú";
+  return m["full_name"] || m["name"] || user.email?.split("@")[0] || "Tú";
 }
 
 export function initials(name: string): string {

@@ -89,6 +89,6 @@ describe("goals", () => {
     const back = moveGoal(done, "proceso", new Date("2026-09-25T10:00:00Z"));
     expect(back.status).toBe("proceso");
     expect(back.history).toHaveLength(1);
-    expect(back.history[0].completedAt).toBe("2026-09-24T10:00:00.000Z");
+    expect(back.history[0]?.completedAt).toBe("2026-09-24T10:00:00.000Z");
   });
 });
