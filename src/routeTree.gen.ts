@@ -10,7 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnalisisRouteImport } from './routes/analisis'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CalendarioRouteImport } from './routes/calendario'
+import { Route as CuentaRouteImport } from './routes/cuenta'
+import { Route as MetasRouteImport } from './routes/metas'
 import { Route as RegistroRouteImport } from './routes/registro'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,9 +22,29 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AnalisisRoute = AnalisisRouteImport.update({
+  id: '/analisis',
+  path: '/analisis',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CalendarioRoute = CalendarioRouteImport.update({
   id: '/calendario',
   path: '/calendario',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CuentaRoute = CuentaRouteImport.update({
+  id: '/cuenta',
+  path: '/cuenta',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MetasRoute = MetasRouteImport.update({
+  id: '/metas',
+  path: '/metas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegistroRoute = RegistroRouteImport.update({
@@ -31,31 +55,69 @@ const RegistroRoute = RegistroRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/analisis': typeof AnalisisRoute
+  '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
+  '/cuenta': typeof CuentaRoute
+  '/metas': typeof MetasRoute
   '/registro': typeof RegistroRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/analisis': typeof AnalisisRoute
+  '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
+  '/cuenta': typeof CuentaRoute
+  '/metas': typeof MetasRoute
   '/registro': typeof RegistroRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/analisis': typeof AnalisisRoute
+  '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
+  '/cuenta': typeof CuentaRoute
+  '/metas': typeof MetasRoute
   '/registro': typeof RegistroRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/calendario' | '/registro'
+  fullPaths:
+    | '/'
+    | '/analisis'
+    | '/auth'
+    | '/calendario'
+    | '/cuenta'
+    | '/metas'
+    | '/registro'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/calendario' | '/registro'
-  id: '__root__' | '/' | '/calendario' | '/registro'
+  to:
+    | '/'
+    | '/analisis'
+    | '/auth'
+    | '/calendario'
+    | '/cuenta'
+    | '/metas'
+    | '/registro'
+  id:
+    | '__root__'
+    | '/'
+    | '/analisis'
+    | '/auth'
+    | '/calendario'
+    | '/cuenta'
+    | '/metas'
+    | '/registro'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnalisisRoute: typeof AnalisisRoute
+  AuthRoute: typeof AuthRoute
   CalendarioRoute: typeof CalendarioRoute
+  CuentaRoute: typeof CuentaRoute
+  MetasRoute: typeof MetasRoute
   RegistroRoute: typeof RegistroRoute
 }
 
@@ -68,11 +130,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/analisis': {
+      id: '/analisis'
+      path: '/analisis'
+      fullPath: '/analisis'
+      preLoaderRoute: typeof AnalisisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/calendario': {
       id: '/calendario'
       path: '/calendario'
       fullPath: '/calendario'
       preLoaderRoute: typeof CalendarioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cuenta': {
+      id: '/cuenta'
+      path: '/cuenta'
+      fullPath: '/cuenta'
+      preLoaderRoute: typeof CuentaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/metas': {
+      id: '/metas'
+      path: '/metas'
+      fullPath: '/metas'
+      preLoaderRoute: typeof MetasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/registro': {
@@ -87,7 +177,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnalisisRoute: AnalisisRoute,
+  AuthRoute: AuthRoute,
   CalendarioRoute: CalendarioRoute,
+  CuentaRoute: CuentaRoute,
+  MetasRoute: MetasRoute,
   RegistroRoute: RegistroRoute,
 }
 export const routeTree = rootRouteImport
