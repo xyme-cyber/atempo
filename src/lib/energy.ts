@@ -69,7 +69,7 @@ export function toKey(d: Date): string {
 }
 
 export function fromKey(key: string): Date {
-  const [y, m, d] = key.split("-").map(Number);
+  const [y = 0, m = 1, d = 1] = key.split("-").map(Number);
   return new Date(y, m - 1, d);
 }
 
@@ -105,7 +105,7 @@ export const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 export function formatLong(key: string): string {
   const d = fromKey(key);
-  return `${cap(WEEKDAYS[d.getDay()])}, ${d.getDate()} de ${MONTHS[d.getMonth()]} de ${d.getFullYear()}`;
+  return `${cap(WEEKDAYS[d.getDay()] ?? "")}, ${d.getDate()} de ${MONTHS[d.getMonth()] ?? ""} de ${d.getFullYear()}`;
 }
 
 /** Monday-first grid of 6x7 or 5x7 dates for a month. */
@@ -126,7 +126,7 @@ export function dayCategory(log: DayLog | undefined): DayCategory {
   const counts = countByEnergy(log.activities);
   const max = Math.max(...ENERGIES.map((e) => counts[e]));
   const top = ENERGIES.filter((e) => counts[e] === max);
-  return top.length > 1 ? "diverso" : top[0];
+  return top.length > 1 ? "diverso" : (top[0] ?? "diverso");
 }
 
 export function countByEnergy(activities: Activity[]): Record<Energy, number> {
@@ -162,7 +162,7 @@ export function roundTo100(values: number[]): number[] {
     .sort((a, b) => b.r - a.r);
   for (const { i } of order) {
     if (rest <= 0) break;
-    floors[i]++;
+    floors[i] = (floors[i] ?? 0) + 1;
     rest--;
   }
   return floors.map((f) => f / 10);

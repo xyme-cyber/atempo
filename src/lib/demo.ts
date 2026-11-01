@@ -38,7 +38,7 @@ export function buildDemo(today = new Date()): { logs: Record<string, DayLog>; g
       }
       const n = 1 + Math.floor(r() * 3);
       const picks = Array.from({ length: n }, (_, i) => {
-        const a = ACTS[Math.floor(r() * ACTS.length)];
+        const a = ACTS[Math.floor(r() * ACTS.length)] ?? ACTS[0]!;
         return { id: `${key}-${i}`, name: a.name, energy: a.energy, minutes: 15 + Math.floor(r() * 6) * 10 };
       });
       logs[key] = {

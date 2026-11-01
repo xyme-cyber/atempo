@@ -62,7 +62,7 @@ function Calendario() {
           <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-baseline gap-3">
               <h2 className="text-2xl">
-                {cap(MONTHS[ym.month0])} {ym.year}
+                {cap(MONTHS[ym.month0] ?? "")} {ym.year}
               </h2>
               <span className="text-sm text-muted-foreground">{daysInMonth(ym.year, ym.month0)} días</span>
             </div>
